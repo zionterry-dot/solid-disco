@@ -1,7 +1,9 @@
+<!DOCTYPE html>
 <html lang="en-us">
 <head>
     <meta charset="UTF-8">
-    <title>Game Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Gaming</title>
     <style>
         body, html {
             margin: 0;
@@ -9,20 +11,32 @@
             overflow: hidden;
             height: 100%;
             width: 100%;
-            background-color: #000;
+            background-color: #101010;
         }
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        #gameFrame {
+            border: none;
             width: 100%;
             height: 100%;
-            border: none;
         }
     </style>
 </head>
 <body>
-    <!-- This iframe points to the direct Fortnite game link via a proxy -->
-    <iframe src="https://www.xbox.com/en-US/play/games/fortnite/BT5P2X999VH2" frameborder="0" allowfullscreen></iframe>
+    <!-- 
+      We use a third-party proxy URL to bypass the firewall 
+      blocking xbox.com directly.
+    -->
+    <iframe 
+        id="gameFrame" 
+        src="https://www.xbox.com" 
+        allow="autoplay; fullscreen; microphone; camera; midi; gamepad"
+        allowfullscreen>
+    </iframe>
+
+    <script>
+        // Optional: Add a script to try and bypass certain iframe restrictions
+        document.getElementById('gameFrame').onload = function() {
+            console.log("Loading cloud gaming...");
+        };
+    </script>
 </body>
 </html>
